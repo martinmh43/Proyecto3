@@ -1,0 +1,11 @@
+<div class="login-container">
+  <h1 class="app-title">Sticker Study</h1>
+  <h2>Inicia sesion</h2>
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <input type="text" placeholder="Usuario" [(ngModel)]="username" name="username" required />
+    <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
+    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+  </form>
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <button (click)="goRegister()">Crea un usuario si no lo tienes</button>
+</div>

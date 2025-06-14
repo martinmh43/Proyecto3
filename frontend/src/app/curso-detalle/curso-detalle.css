@@ -1,0 +1,88 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+
+body {
+  box-sizing: border-box;
+}
+
+
+.curso-titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem; 
+  color: var(--color-secundario);
+}
+
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; 
+  padding-bottom: 2rem;
+}
+
+
+
+.menu-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 320px;
+}
+
+.menu-nav li {
+  width: 100%;
+}
+
+.menu-nav button {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #fff7e0; 
+  color: var(--color-secundario);
+  border: 2px solid var(--color-primario);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-nav button:hover {
+  background-color: var(--color-fondo-linea);
+  transform: translateY(-2px);
+}
+
+.volver-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.volver-container button {
+  background: none;
+  border: 2px solid var(--color-secundario);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-secundario);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.volver-container button:hover {
+  background-color: var(--color-primario);
+  color: #000;
+}
+
+

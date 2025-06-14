@@ -1,0 +1,71 @@
+.pegatinas-titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem 0 1.5rem;
+  color: var(--color-secundario);
+}
+
+.volver-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.volver-container button {
+  background: none;
+  border: 2px solid var(--color-secundario);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-secundario);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.volver-container button:hover {
+  background-color: var(--color-primario);
+  color: #000;
+}
+.pegatinas-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 por fila */
+  gap: 2rem; /* espacio entre pegatinas */
+  padding: 2rem 3rem; /* espacio con los bordes laterales */
+  box-sizing: border-box;
+  justify-items: center;
+}
+
+.pegatina-container {
+  position: relative;
+  width: 100%;
+  max-width: 180px; /* controla el tamaño máximo de la pegatina */
+}
+
+.pegatina-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pegatina-nombre {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: var(--color-secundario);
+  text-align: center;
+  padding: 4px 0;
+  opacity: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: opacity 0.3s;
+}
+
+.pegatina-container:hover .pegatina-nombre {
+  opacity: 1;
+}
+

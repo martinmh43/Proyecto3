@@ -1,0 +1,40 @@
+<div class="pagina-intercambio">
+  <h2 class="intercambio-titulo">Intercambiar Pegatinas</h2>
+
+  <div class="intercambio-formulario">
+    <label>Selecciona pegatina a enviar:</label>
+    <select [(ngModel)]="pegatinaSeleccionada">
+      <option *ngFor="let p of pegatinasPropias" [value]="p.id">{{ p.nombre }}</option>
+    </select>
+
+    <label>Selecciona usuario destinatario:</label>
+    <select [(ngModel)]="receptorId">
+      <option *ngFor="let u of usuarios" [value]="u.id">{{ u.username }}</option>
+    </select>
+
+    <button (click)="enviarSolicitud()">Enviar solicitud</button>
+  </div>
+
+  <h3 class="pendientes-titulo">Solicitudes pendientes</h3>
+
+  <div class="pendientes-contenedor">
+    <div class="pendiente-card" *ngFor="let i of intercambiosPendientes">
+      <p><strong>De:</strong> {{ i.emisor_username }} quiere intercambiar su pegatina "<strong>{{ i.pegatina_emisor_nombre }}</strong>"</p>
+
+      <label>Elegir tu pegatina a cambio:</label>
+      <select [(ngModel)]="pegatinaARecibirId">
+        <option *ngFor="let p of pegatinasPropias" [value]="p.id">{{ p.nombre }}</option>
+      </select>
+
+      <div class="botones-respuesta">
+        <button (click)="aceptar(i)">Aceptar</button>
+        <button (click)="rechazar(i)">Rechazar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="volver-container">
+    <button (click)="volverAlCurso()">Volver al curso</button>
+  </div>
+
+</div>

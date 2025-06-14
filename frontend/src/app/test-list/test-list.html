@@ -1,0 +1,32 @@
+<button class="volver-curso" (click)="volverAlCurso()">Volver al curso</button>
+
+<ul class="pregunta-lista">
+  <li *ngFor="let pregunta of preguntas" class="pregunta-card">
+    <ng-container *ngIf="esProfesor; else alumno">
+      <label class="pregunta-label">
+        <input
+          type="checkbox"
+          [(ngModel)]="pregunta.active"
+          (change)="guardarCambios(pregunta)"
+        />
+        <strong>{{ pregunta.texto }}</strong>
+        <span *ngIf="!pregunta.active" class="inactiva">(inactiva)</span>
+      </label>
+      <ul class="respuesta-lista">
+        <li *ngFor="let r of pregunta.respuestas">
+          - {{ r.texto }} <span *ngIf="r.correcta" class="correcta">✔</span>
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-template #alumno>
+      <button
+        (click)="empezarPregunta(pregunta)"
+        [disabled]="!pregunta.active"
+        class="pregunta-boton"
+      >
+        {{ pregunta.texto }}
+      </button>
+    </ng-template>
+  </li>
+</ul>
