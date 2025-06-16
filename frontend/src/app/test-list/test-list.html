@@ -1,5 +1,3 @@
-<button class="volver-curso" (click)="volverAlCurso()">Volver al curso</button>
-
 <ul class="pregunta-lista">
   <li *ngFor="let pregunta of preguntas" class="pregunta-card">
     <ng-container *ngIf="esProfesor; else alumno">
@@ -30,3 +28,6 @@
     </ng-template>
   </li>
 </ul>
+<div class="volver-container">
+  <button (click)="volverAlCurso()">Volver al curso</button>
+</div>

@@ -1,17 +1,26 @@
-<h2>Perfil</h2>
-<button (click)="volverAlCurso()">
-  Volver al curso
-</button>
-<p><strong>Usuario:</strong> {{ usuario.username }}</p>
-<p><strong>Rol:</strong> {{ usuario.role }}</p>
+<h2 class="perfil-titulo">Perfil</h2>
+
+<p class="perfil-dato">
+  <span class="perfil-label">Nombre: </span>
+  <span class="perfil-valor perfil-nombre">{{ usuario.username }}</span>
+</p>
+
+<p class="perfil-dato">
+  <span class="perfil-label">Rol: </span>
+  <span class="perfil-valor">{{ usuario.role }}</span>
+</p>
+
+<div class="volver-container">
+  <button (click)="volverAlCurso()">Volver al curso</button>
+</div>
 
 <div *ngIf="usuario.role === 'profesor'">
-  <h3>Historial de intercambios</h3>
-  <ul>
-    <li *ngFor="let i of intercambios">
-      {{ i.fecha | date:'short' }} - 
-      <strong>{{ i.emisor }}</strong> → <strong>{{ i.receptor }}</strong>: 
-      "{{ i.pegatina_emisor }}" ⇄ "{{ i.pegatina_receptor || 'Sin respuesta' }}" — 
+  <h3 class="perfil-historial-titulo">Historial de intercambios</h3>
+  <ul class="historial-lista">
+    <li *ngFor="let i of intercambios" class="historial-item">
+      {{ i.fecha | date:'short' }} –
+      <strong>{{ i.emisor }}</strong> → <strong>{{ i.receptor }}</strong>:
+      "{{ i.pegatina_emisor }}" ⇄ "{{ i.pegatina_receptor || 'Sin respuesta' }}" —
       <em>{{ i.estado }}</em>
     </li>
   </ul>

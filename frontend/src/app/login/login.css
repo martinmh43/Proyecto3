@@ -119,6 +119,7 @@ button[type="submit"]:hover {
   color: var(--color-primario);
 }
 
+
 /* Responsive */
 @media (max-width: 768px) {
   .app-title {

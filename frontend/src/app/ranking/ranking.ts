@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   selector: 'app-ranking',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './ranking.html'
+  templateUrl: './ranking.html',
+  styleUrls: ['./ranking.css']
 })
 export class Ranking implements OnInit {
   cursoId!: number;

@@ -1,11 +1,21 @@
-<h2>Ranking del Curso</h2>
-<button (click)="volverAlCurso()">
-  Volver al curso
-</button>
-<div *ngIf="error" style="color:red">{{ error }}</div>
+<h2 class="ranking-titulo">Ranking del Curso</h2>
 
-<ol>
-  <li *ngFor="let item of ranking">
-    {{ item.username }} — {{ item.puntos }} puntos
-  </li>
-</ol>
+<div class="volver-container">
+  <button (click)="volverAlCurso()">Volver al curso</button>
+</div>
+
+<div *ngIf="error" class="ranking-error">{{ error }}</div>
+
+<div class="ranking-scroll-wrapper">
+  <ol class="ranking-lista">
+    <li *ngFor="let item of ranking; let i = index" class="ranking-item">
+      <div
+        class="ranking-barra"
+        [ngStyle]="{ '--progreso': (1 - i / (ranking.length - 1)) }"
+      >
+        <span class="ranking-nombre">{{ item.username }}</span>
+        <span class="ranking-puntos">{{ item.puntos }} pts</span>
+      </div>
+    </li>
+  </ol>
+</div>

@@ -33,6 +33,7 @@ export class Perfil implements OnInit {
   cargarHistorial() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/historial-intercambios/')
       .subscribe(data => {
+        console.log("Intercambios recibidos:", data);
         this.intercambios = data;
       });
   }

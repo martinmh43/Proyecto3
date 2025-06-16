@@ -30,11 +30,11 @@ def mis_pegatinas(request):
 def historial_intercambios(request):
     if not hasattr(request.user, 'profile') or request.user.profile.role != 'profesor':
         raise PermissionDenied("Solo los profesores pueden ver el historial de intercambios.")
-    
-    cursos_ids = CursoUsuario.objects.filter(user=request.user).values_list('curso_id', flat=True)
-    
+
+    cursos_ids = Cursos.objects.filter(test__created_by=request.user).values_list('id', flat=True).distinct()
+
     intercambios = Intercambio.objects.filter(
-        receptor__curso_usuario__curso_id__in=cursos_ids
+        curso_id__in=cursos_ids
     ).select_related('emisor', 'receptor', 'pegatina_emisor', 'pegatina_receptor')
 
     data = [{
@@ -47,6 +47,8 @@ def historial_intercambios(request):
     } for i in intercambios]
 
     return Response(data)
+
+
 
 
 

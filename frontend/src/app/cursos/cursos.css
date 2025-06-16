@@ -24,14 +24,14 @@ html, body {
 
 .cursos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, 1fr); /* por defecto: 5 columnas */
   gap: 1.5rem;
   padding: 1rem 0;
   justify-items: center;
   box-sizing: border-box;
   flex: 1;
-  overflow-y: auto; /* solo scroll aquí si hay muchos cursos */
-  max-height: calc(100vh - 150px); /* ajusta si tenés más elementos arriba */
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
 }
 
 .curso-card {
@@ -82,7 +82,15 @@ html, body {
   background-color: var(--color-input-focus);
 }
 
-.cerrar-sesion-container button {
+.volver-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.volver-container button {
   background: none;
   border: 2px solid var(--color-secundario);
   padding: 0.4rem 0.75rem;
@@ -94,19 +102,20 @@ html, body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-
-.cerrar-sesion-container button {
-  background: none;
-  border: 2px solid var(--color-secundario);
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  color: var(--color-secundario);
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.cerrar-sesion-container button:hover {
+.volver-container button:hover {
   background-color: var(--color-primario);
   color: #000;
+}
+
+
+@media (max-width: 600px) {
+  .cursos-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .curso-card {
+    max-width: 140px; 
+  }
 }

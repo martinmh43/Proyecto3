@@ -1,0 +1,85 @@
+.ranking-titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  color: var(--color-secundario);
+}
+
+.ranking-error {
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ranking-lista {
+  list-style: none;
+  padding: 0 2rem;
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ranking-item {
+  position: relative;
+}
+
+.ranking-barra {
+  position: relative;
+  background-color: #fff7e0; 
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: var(--color-secundario);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  background-image: linear-gradient(to right, var(--color-acierto), var(--color-acierto));
+  background-repeat: no-repeat;
+  background-size: calc(var(--progreso, 0) * 100%) 100%;
+  background-position: left center;
+}
+
+
+.ranking-nombre {
+  text-align: left;
+}
+
+.ranking-puntos {
+  text-align: right;
+}
+
+.ranking-contenedor-scroll {
+  max-height: calc(100vh - 160px); 
+  overflow-y: auto;
+  padding-bottom: 2rem;
+}
+
+
+.volver-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.volver-container button {
+  background: none;
+  border: 2px solid var(--color-secundario);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-secundario);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.volver-container button:hover {
+  background-color: var(--color-primario);
+  color: #000;
+}

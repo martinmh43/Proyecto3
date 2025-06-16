@@ -1,0 +1,81 @@
+.perfil-titulo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  color: var(--color-secundario);
+}
+
+.perfil-dato {
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.perfil-label {
+  color: var(--color-secundario);
+  font-weight: bold;
+}
+
+.perfil-nombre {
+  font-size: 2rem; 
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.perfil-valor {
+  color: var(--color-acierto);
+  font-size: 2rem; 
+}
+
+
+.perfil-historial-titulo {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0 1rem;
+  color: var(--color-secundario);
+}
+
+.historial-lista {
+  list-style: none;
+  padding: 0 2rem 3rem;
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historial-item {
+  background-color: #fff7e0;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-primario);
+  font-size: 0.95rem;
+  color: var(--color-secundario);
+}
+
+.volver-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.volver-container button {
+  background: none;
+  border: 2px solid var(--color-secundario);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-secundario);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.volver-container button:hover {
+  background-color: var(--color-primario);
+  color: #000;
+}
