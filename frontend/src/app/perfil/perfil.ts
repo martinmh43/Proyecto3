@@ -22,7 +22,7 @@ export class Perfil implements OnInit {
   ngOnInit() {
     const urlParams = this.router.url.split('/');
     this.cursoId = Number(urlParams[2]);
-
+    //Coge los datos del perfil usando la api
     this.http.get('http://localhost:8000/api/auth/profile/').subscribe(data => {
       this.usuario = data;
       if (this.usuario.role === 'profesor') {
@@ -39,18 +39,21 @@ export class Perfil implements OnInit {
       return;
     }
 
+    //Muestra el historial de intercambios segun el curso en el que estes
     this.http.get<any[]>(`http://localhost:8000/api/cursos/historial-intercambios/?curso=${this.cursoId}`)
       .subscribe(data => {
         this.intercambios = data;
       });
   }
 
+  //Muestra dos pegatinas aleatorias (si tienes) para que el perfil sea mas animado
   cargarPegatinas() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/mis-pegatinas/').subscribe(data => {
       this.pegatinas = data.sort(() => 0.5 - Math.random()).slice(0, 2);
     });
   }
 
+  //Vuelves al curso
   volverAlCurso() {
     this.router.navigate(['/curso', this.cursoId]);
   }

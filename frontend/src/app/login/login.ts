@@ -37,6 +37,7 @@ export class Login {
     });
   }
 
+  // Te manda al register
   goRegister() {
     this.router.navigate(['/register']);
   }

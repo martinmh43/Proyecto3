@@ -24,6 +24,7 @@ export class Ranking implements OnInit {
     const urlParams = this.router.url.split('/');
   }
 
+  // Usa la api para sacar los datos que usa en el ranking
   cargarRanking() {
     this.http.get<any[]>(`http://localhost:8000/api/cursos/${this.cursoId}/ranking/`)
       .subscribe({
@@ -35,6 +36,7 @@ export class Ranking implements OnInit {
       });
   }
 
+  //Boton volver
   volverAlCurso() {
     this.router.navigate(['/curso', this.cursoId]);
   }

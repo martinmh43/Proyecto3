@@ -1,11 +1,11 @@
 <h2 class="ranking-titulo">Ranking del Curso</h2>
-
+<!-- Boton volver -->
 <div class="volver-container">
   <button (click)="volverAlCurso()">Volver al curso</button>
 </div>
 
 <div *ngIf="error" class="ranking-error">{{ error }}</div>
-
+<!-- Uso un scroll wrapper para que se muestren las personas del ranking y los puntos -->
 <div class="ranking-scroll-wrapper">
   <ol class="ranking-lista">
     <li *ngFor="let item of ranking; let i = index" class="ranking-item">

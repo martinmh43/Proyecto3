@@ -76,6 +76,7 @@ export class TestsList implements OnInit {
     });
   }
   
+  // Guarda los cambios a traves de la api
   guardarCambios(pregunta: Pregunta) {
     const url = `http://localhost:8000/api/cursos/preguntas/${pregunta.id}/`;
     this.http.patch<Pregunta>(url, { active: pregunta.active }).subscribe({
@@ -91,6 +92,7 @@ export class TestsList implements OnInit {
     this.router.navigate(['/curso', this.cursoId, 'test', pregunta.test_id]);
   }
 
+  // Activa pregunta si desactivada y al reves
   toggleActivePregunta(pregunta: Pregunta) {
     const nuevoEstado = !pregunta.active;
     this.http.patch<Pregunta>(`http://localhost:8000/api/preguntas/${pregunta.id}/`, { active: nuevoEstado })

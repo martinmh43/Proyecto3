@@ -1,13 +1,13 @@
 <div class="main-content">
   <h2 class="section-title">Cursos disponibles</h2>
-
+<!-- Tabla para mostrar los cursos -->
   <div class="cursos-grid">
     <div class="curso-card" *ngFor="let curso of cursos">
       <div class="curso-nombre">{{ curso.name }}</div>
       <button (click)="unirse(curso.id)">Unirse</button>
     </div>
   </div>
-
+<!-- Boton de volver -->
   <div class="volver-container">
   <button (click)="cerrarSesion()">Cerrar sesión</button>
 </div>

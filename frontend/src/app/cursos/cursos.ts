@@ -18,6 +18,7 @@ export class Cursos {
     this.loadCursos();
   }
 
+  // Carga los cursos
   loadCursos() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/')
       .subscribe({
@@ -26,10 +27,12 @@ export class Cursos {
       });
   }
 
+  //Te une al curso
   unirse(cursoId: number) {
     this.router.navigate(['/curso', cursoId]);
   }
 
+  //Cierra sesion y borra el localStorage
   cerrarSesion() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');

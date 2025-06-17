@@ -34,6 +34,7 @@ export class Intercambio implements OnInit {
     this.cargarIntercambios();
   }
 
+  // Carga los usuarios disponibles para intercambiar
   cargarUsuarios() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/usuarios-mismo-curso/')
       .subscribe(data => {
@@ -42,18 +43,21 @@ export class Intercambio implements OnInit {
   }
   
 
+  //Carga las pegatinas disponibles para intercambiar
   cargarPegatinas() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/mis-pegatinas/').subscribe(data => {
       this.pegatinasPropias = data;
     });
   }
 
+  //Carga la solicitud de intercambio y pone su estado en pendiente
   cargarIntercambios() {
     this.http.get<any[]>('http://localhost:8000/api/cursos/intercambios/').subscribe(data => {
       this.intercambiosPendientes = data.filter(i => i.estado === 'pendiente');
     });
   }
 
+  //Envia la solicitud a la persona, sino vuelve
   enviarSolicitud() {
     console.log('cursoId que se envía:', this.cursoId); 
     if (!this.pegatinaSeleccionada || !this.receptorId || !this.cursoId) return;

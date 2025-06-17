@@ -1,6 +1,6 @@
 <h2 class="test-titulo">Test: {{ test?.name }}</h2>
 <div *ngIf="error" class="test-error">{{ error }}</div>
-
+<!-- Comprueba si el test ya se ha hecho para no volver a mostrarlo -->
 <div *ngIf="!terminado" class="test-contenido">
   <div *ngFor="let pregunta of preguntas" class="test-pregunta">
     <p class="test-pregunta-texto"><strong>{{ pregunta.texto }}</strong></p>
@@ -17,16 +17,19 @@
     </ul>
   </div>
 
+  <!-- Entrega respuestas -->
   <button (click)="enviarRespuestas()" [disabled]="esProfesor">Enviar respuestas</button>
 
+  <!-- Si eres profesor no puedes responder, por si acabase en esta ruta de alguna forma extraña -->
   <div *ngIf="esProfesor" class="test-aviso-profesor">
     Los profesores no pueden responder tests.
   </div>
 </div>
 
+<!-- te da el resultado -->
 <div *ngIf="terminado" class="test-resultado">
   <p>Has obtenido <strong>{{ puntosObtenidos }}</strong> punto(s) en este test.</p>
-  <button (click)="router.navigate(['/curso', cursoId, 'tests'])">Volver a tests</button>
+  <button (click)="router.navigate(['/curso', cursoId, 'tests'])">Volver a tests</button><!-- Puntos que se sumaran al ranking -->
 </div>
 
 <div class="volver-container">

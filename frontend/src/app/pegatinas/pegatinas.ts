@@ -26,6 +26,7 @@ export class Pegatinas implements OnInit {
       });
   }
 
+  //Boton para volver
   volverAlCurso() {
     this.router.navigate(['/curso', this.cursoId]);
   }

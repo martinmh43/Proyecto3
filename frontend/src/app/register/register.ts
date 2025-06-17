@@ -18,6 +18,7 @@ export class Register {
       return;
     }
   
+    //Registra usando la api
     this.http.post('http://127.0.0.1:8000/api/auth/register/', { username, password, role })
       .subscribe({
         next: () => {

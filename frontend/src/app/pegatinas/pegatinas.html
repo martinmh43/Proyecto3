@@ -1,12 +1,13 @@
 <h2 class="pegatinas-titulo">Mis Pegatinas</h2>
-
+<!-- Boton para volver -->
 <div class="volver-container">
   <button (click)="volverAlCurso()">Volver al curso</button>
 </div>
 
 <div *ngIf="error">{{ error }}</div>
-<div *ngIf="pegatinas.length === 0 && !error">No tienes pegatinas aún.</div>
+<div *ngIf="pegatinas.length === 0 && !error">Aun no tienes pegatinas.</div>
 
+<!-- Contenedor que muestra las pegatinas que tienes -->
 <div class="pegatinas-container">
   <div *ngFor="let p of pegatinas" class="pegatina-container">
     <img [src]="'http://localhost:8000' + p.imagen" alt="pegatina-img" />

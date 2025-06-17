@@ -22,26 +22,32 @@ export class CursoDetalle implements OnInit {
     });
   }
 
+  // Nevageas a la pestaña de test
   verTests() {
   this.router.navigate(['/curso', this.cursoId, 'tests']);
   }
 
+  // Nevageas a la pestaña de ranking
   verRanking() {
     this.router.navigate(['/curso', this.cursoId, 'ranking']);
   }
 
+  // Nevageas a la pestaña de pegatinas
   verPegatinas() {
     this.router.navigate(['/curso', this.cursoId, 'pegatinas']);
   }
 
+  // Nevageas a la pestaña de intercambio
   verIntercambio() {
     this.router.navigate(['/curso', this.cursoId, 'intercambio']);
   }
 
+  // Nevageas a la pestaña de perfil
   verPerfil() {
     this.router.navigate(['/curso', this.cursoId, 'perfil']);
   }
 
+  // Nevageas a la pestaña de cursos
   volverACursos() {
     this.router.navigate(['/cursos']);
   }

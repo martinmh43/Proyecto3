@@ -1,12 +1,12 @@
 <ul class="pregunta-lista">
   <li *ngFor="let pregunta of preguntas" class="pregunta-card">
-    <ng-container *ngIf="esProfesor; else alumno">
+    <ng-container *ngIf="esProfesor; else alumno"><!-- Checkea si es profesor o alumno para mostrar una cosa u otra -->
       <label class="pregunta-label">
         <input
           type="checkbox"
           [(ngModel)]="pregunta.active"
           (change)="guardarCambios(pregunta)"
-        />
+        /><!-- En caso de ser profesor muestra las preguntas y una checkbox para comprobar si las quiere o no activar -->
         <strong>{{ pregunta.texto }}</strong>
         <span *ngIf="!pregunta.active" class="inactiva">(inactiva)</span>
       </label>
@@ -17,12 +17,12 @@
       </ul>
     </ng-container>
 
-    <ng-template #alumno>
+    <ng-template #alumno><!-- Esto en caso de que sea alumno -->
       <button
         (click)="empezarPregunta(pregunta)"
         [disabled]="!pregunta.active"
         class="pregunta-boton"
-      >
+      ><!-- Si hace click en la pregunta la empieza y podra resolverla si marca una respuesta -->
         {{ pregunta.texto }}
       </button>
     </ng-template>
