@@ -25,7 +25,7 @@
 .pregunta-lista {
   list-style: none;
   padding: 0 2rem;
-  margin: 0;
+  margin: 4rem 0 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
