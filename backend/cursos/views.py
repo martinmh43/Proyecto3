@@ -9,7 +9,7 @@ from rest_framework.exceptions import PermissionDenied
 from authapp.models import Profile
 
 
-
+# Devuelve usuarios que compartes curso con el usuario actual
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def usuarios_mismo_curso(request):
@@ -18,6 +18,7 @@ def usuarios_mismo_curso(request):
     data = [{'id': u.id, 'username': u.username} for u in usuarios]
     return Response(data)
 
+# Devuelve pegatinas del usuario actual
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def mis_pegatinas(request):
@@ -25,6 +26,7 @@ def mis_pegatinas(request):
     data = [{'id': p.id, 'nombre': p.nombre, 'imagen': p.imagen.url} for p in pegatinas]
     return Response(data)
 
+# SOLO PARA PROFESORES, muestra el historial de intercambios
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def historial_intercambios(request):
@@ -51,7 +53,7 @@ def historial_intercambios(request):
 
 
 
-
+# SOLO PARA LEER, lista usuarios del curso ordenado por puntos
 class CursoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Cursos.objects.all()
     serializer_class = CursosSerializer
@@ -72,7 +74,7 @@ class CursoViewSet(viewsets.ReadOnlyModelViewSet):
 
         return Response(data)
     
-
+# Devuelve tests segun el curso (si el usuario respondio uno no lo devuelve ese)
 class TestViewSet(viewsets.ModelViewSet):
     serializer_class = TestSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -139,7 +141,7 @@ class TestViewSet(viewsets.ModelViewSet):
         return Response({'correctas': correctas, 'total': test.preguntas.count()})
 
     
-
+# Ver relacciones si eres admin
 class CursoUsuarioViewSet(viewsets.ModelViewSet):
     queryset = CursoUsuario.objects.all()
     serializer_class = CursoUsuarioSerializer
@@ -154,6 +156,7 @@ class CursoUsuarioViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+# Listado de preguntas
 class PreguntasList(generics.ListAPIView):
     serializer_class = PreguntaSerializer
 
@@ -161,12 +164,13 @@ class PreguntasList(generics.ListAPIView):
         test_id = self.kwargs['test_id']
         return Pregunta.objects.filter(test_id=test_id)
 
+#Actualizacion listado preguntas
 class PreguntaUpdate(generics.UpdateAPIView):
     queryset = Pregunta.objects.all()
     serializer_class = PreguntaSerializer
     permission_classes = [IsAuthenticated]
 
-
+# CRUD de intercambio de pegatinas
 class IntercambioViewSet(viewsets.ModelViewSet):
     queryset = Intercambio.objects.all()
     serializer_class = IntercambioSerializer
@@ -194,9 +198,6 @@ class IntercambioViewSet(viewsets.ModelViewSet):
         # Guardamos el intercambio con el usuario autenticado como emisor y el curso
         serializer.save(emisor=request.user, curso=curso)
         return Response(serializer.data, status=201)
-
-
-
 
 
     @action(detail=True, methods=['patch'])
@@ -231,19 +232,15 @@ class IntercambioViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def historial_intercambios(request):
-    try:
-        profile = request.user.profile
-        print("DEBUG perfil:", profile)
-        print("DEBUG rol:", profile.role)
-        
-        if profile.role != 'profesor':
-            return Response({'detail': 'Acceso restringido a profesores.'}, status=403)
-    except Profile.DoesNotExist:
-        return Response({'detail': 'No tienes perfil asociado.'}, status=403)
+    if not hasattr(request.user, 'profile') or request.user.profile.role != 'profesor':
+        return Response({'detail': 'Acceso restringido a profesores.'}, status=403)
 
-    cursos_ids = CursoUsuario.objects.filter(user=request.user).values_list('curso_id', flat=True)
+    curso_id = request.query_params.get('curso')
+    if not curso_id:
+        return Response({'detail': 'Falta el parámetro del curso'}, status=400)
+
     intercambios = Intercambio.objects.filter(
-        curso_id__in=cursos_ids
+        curso_id=curso_id
     ).select_related('emisor', 'receptor', 'pegatina_emisor', 'pegatina_receptor')
 
     data = [{
@@ -256,3 +253,4 @@ def historial_intercambios(request):
     } for i in intercambios]
 
     return Response(data)
+

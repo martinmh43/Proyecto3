@@ -55,7 +55,7 @@ export class Intercambio implements OnInit {
   }
 
   enviarSolicitud() {
-    console.log('cursoId que se envía:', this.cursoId);  // Agrega esto
+    console.log('cursoId que se envía:', this.cursoId); 
     if (!this.pegatinaSeleccionada || !this.receptorId || !this.cursoId) return;
   
     this.http.post('http://localhost:8000/api/cursos/intercambios/', {

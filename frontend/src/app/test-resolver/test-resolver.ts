@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './test-resolver.html',
+  styleUrls: ['./test-resolver.css']
 })
 export class TestResolver implements OnInit {
   cursoId!: number;
@@ -66,6 +67,11 @@ export class TestResolver implements OnInit {
       },
       error: () => this.error = 'Error al enviar las respuestas.'
     });
+  }
+
+  volverAlCurso() {
+    this.router.navigate(['/curso', this.cursoId]);
+
   }
 
 }

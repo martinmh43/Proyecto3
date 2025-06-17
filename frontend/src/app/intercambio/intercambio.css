@@ -25,11 +25,10 @@ html, body {
 
 
 .volver-container {
-  position: absolute;
-  bottom: 1rem;
-  left: 2rem;
-  margin: 0;
-  padding: 0;
+  position: fixed;       
+  top: 1rem;             
+  left: 1rem;            
+  z-index: 1000;         
 }
 
 .volver-container button {
@@ -95,7 +94,7 @@ html, body {
 }
 
 .pendientes-contenedor {
-  max-width: 800px; /* antes 600px o menos */
+  max-width: 800px; 
   width: 100%;
   height: 240px;
   overflow-y: auto;

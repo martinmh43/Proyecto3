@@ -1,0 +1,95 @@
+.test-titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  color: var(--color-secundario);
+}
+
+.test-error {
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.test-contenido {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.test-pregunta {
+  background-color: #fff7e0;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-primario);
+}
+
+.test-pregunta-texto {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-secundario);
+}
+
+.test-pregunta ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.test-pregunta li {
+  margin-bottom: 0.5rem;
+}
+
+.test-aviso-profesor {
+  color: gray;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.test-resultado {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  color: var(--color-secundario);
+}
+
+button {
+  background-color: var(--color-primario);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--color-input-focus);
+}
+
+.volver-container {
+  position: fixed;       
+  top: 1rem;             
+  left: 1rem;            
+  z-index: 1000;         
+}
+
+.volver-container button {
+  background: none;
+  border: 2px solid var(--color-secundario);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-secundario);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.volver-container button:hover {
+  background-color: var(--color-primario);
+  color: #000;
+}

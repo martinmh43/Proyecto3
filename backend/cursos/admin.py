@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Cursos, Test, Pregunta, Respuesta, Pegatina, CursoUsuario, Intercambio, User
 from .forms import IntercambioForm
 
+#Definimos las clases pal admin, bastane intuitivo todo
 class PreguntaInline(admin.TabularInline):
     model = Pregunta
     extra = 1
@@ -34,6 +35,7 @@ class IntercambioAdmin(admin.ModelAdmin):
     raw_id_fields = ('emisor', 'receptor')
 
 
+#Las registramos para admin de localhost del backend
 
 admin.site.register(Cursos)
 admin.site.register(Test, TestAdmin)

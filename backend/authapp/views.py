@@ -9,6 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from authapp.models import Profile
 
+# Vista del register
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
@@ -17,10 +18,10 @@ def register(request):
     role = request.data.get('role')  # 'profesor' o 'alumno'
 
     if not username or not password or not role:
-        return Response({'error': 'Faltan campos'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Faltan campos'}, status=status.HTTP_400_BAD_REQUEST) # Comprobacion poner todos los campos
 
     if User.objects.filter(username=username).exists():
-        return Response({'error': 'Usuario ya existe'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Usuario ya existe'}, status=status.HTTP_400_BAD_REQUEST) #Comprobacion que no exista user
 
     user = User.objects.create(
     username=username,
@@ -35,6 +36,7 @@ def register(request):
 
     return Response({'message': 'Usuario creado correctamente'})
 
+# Vista login
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login_view(request):
@@ -53,6 +55,7 @@ def login_view(request):
         'role': user.profile.role,
     })
 
+# Vista del perfil (formao por user, passw y role)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def profile(request):

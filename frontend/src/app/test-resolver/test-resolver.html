@@ -1,9 +1,9 @@
-<h2>Test: {{ test?.name }}</h2>
-<div *ngIf="error" style="color:red">{{ error }}</div>
+<h2 class="test-titulo">Test: {{ test?.name }}</h2>
+<div *ngIf="error" class="test-error">{{ error }}</div>
 
-<div *ngIf="!terminado">
-  <div *ngFor="let pregunta of preguntas">
-    <p><strong>{{ pregunta.texto }}</strong></p>
+<div *ngIf="!terminado" class="test-contenido">
+  <div *ngFor="let pregunta of preguntas" class="test-pregunta">
+    <p class="test-pregunta-texto"><strong>{{ pregunta.texto }}</strong></p>
     <ul>
       <li *ngFor="let respuesta of pregunta.respuestas">
         <label>
@@ -16,12 +16,19 @@
       </li>
     </ul>
   </div>
-  <button (click)="enviarRespuestas()" [disabled]="esProfesor">Enviar respuestas</button>
-<div *ngIf="esProfesor" style="color: gray;">Los profesores no pueden responder tests.</div>
 
+  <button (click)="enviarRespuestas()" [disabled]="esProfesor">Enviar respuestas</button>
+
+  <div *ngIf="esProfesor" class="test-aviso-profesor">
+    Los profesores no pueden responder tests.
+  </div>
 </div>
 
-<div *ngIf="terminado">
-  <p>Has obtenido {{ puntosObtenidos }} punto(s) en este test.</p>
+<div *ngIf="terminado" class="test-resultado">
+  <p>Has obtenido <strong>{{ puntosObtenidos }}</strong> punto(s) en este test.</p>
   <button (click)="router.navigate(['/curso', cursoId, 'tests'])">Volver a tests</button>
+</div>
+
+<div class="volver-container">
+  <button (click)="volverAlCurso()">Volver al curso</button>
 </div>

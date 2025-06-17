@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 
@@ -61,11 +61,10 @@ body {
 }
 
 .volver-container {
-  position: absolute;
-  bottom: 1rem;
-  left: 2rem;
-  margin: 0;
-  padding: 0;
+  position: fixed;       
+  top: 1rem;             
+  left: 1rem;            
+  z-index: 1000;         
 }
 
 .volver-container button {

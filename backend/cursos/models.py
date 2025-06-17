@@ -10,7 +10,7 @@ class Cursos(models.Model):
 
 class Test(models.Model):
     name = models.CharField(max_length=100)
-    content = models.JSONField()  # Guarda el JSON con las preguntas/respuestas
+    content = models.JSONField()  # Guarda el JSON con las preguntas/respuestas DEPRECATED
     active = models.BooleanField(default=False)
     cursos = models.ForeignKey(Cursos, on_delete=models.CASCADE, related_name='tests')
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  # profesor que creó/activó
@@ -19,10 +19,10 @@ class Test(models.Model):
         return self.name
 
 class CursoUsuario(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) # Ponemos cascada para borrar lo relacionado xq sino xd
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
     puntos = models.PositiveIntegerField(default=0)
-    pegatinas = models.ManyToManyField('Pegatina', blank=True)
+    pegatinas = models.ManyToManyField('Pegatina', blank=True) # blank true porque empiezas sin
 
     class Meta:
         unique_together = ('user', 'curso')
@@ -78,4 +78,3 @@ class Intercambio(models.Model):
     pegatina_receptor = models.ForeignKey(Pegatina, related_name='deseadas', on_delete=models.CASCADE, null=True, blank=True)
     estado = models.CharField(max_length=10, choices=[('pendiente', 'Pendiente'), ('aceptado', 'Aceptado'), ('rechazado', 'Rechazado')], default='pendiente')
     creado = models.DateTimeField(auto_now_add=True)
-

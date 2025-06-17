@@ -6,11 +6,10 @@
 }
 
 .volver-container {
-  position: absolute;
-  bottom: 1rem;
-  left: 2rem;
-  margin: 0;
-  padding: 0;
+  position: fixed;       
+  top: 1rem;             
+  left: 1rem;            
+  z-index: 1000;         
 }
 
 .volver-container button {
@@ -33,7 +32,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 por fila */
   gap: 2rem; /* espacio entre pegatinas */
-  padding: 2rem 3rem; /* espacio con los bordes laterales */
+  padding: 2rem 3rem;
   box-sizing: border-box;
   justify-items: center;
 }

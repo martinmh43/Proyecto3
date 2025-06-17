@@ -20,10 +20,9 @@ export class Register {
   
     this.http.post('http://127.0.0.1:8000/api/auth/register/', { username, password, role })
       .subscribe({
-        next: (res: any) => {
-          this.message = res.message || 'Registro exitoso';
-          // Opcional: redirigir tras unos segundos
-          // setTimeout(() => this.router.navigate(['/']), 1000);
+        next: () => {
+          setTimeout(() => this.router.navigate(['/']), 1000);
+          this.message = 'Registro exitoso';
         },
         error: err => {
           this.message = err.error?.error || 'Error en el registro';

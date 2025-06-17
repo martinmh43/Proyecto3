@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* evita scroll innecesario si no hay desborde */
+  overflow: hidden; 
   font-family: 'Arial', sans-serif;
 }
 
@@ -83,11 +83,10 @@ html, body {
 }
 
 .volver-container {
-  position: absolute;
-  bottom: 1rem;
-  left: 2rem;
-  margin: 0;
-  padding: 0;
+  position: fixed;       
+  top: 1rem;             
+  left: 1rem;            
+  z-index: 1000;         
 }
 
 .volver-container button {

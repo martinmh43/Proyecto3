@@ -20,23 +20,31 @@ export class Perfil implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    this.http.get('http://localhost:8000/api/auth/profile/').subscribe(data => {
-      this.usuario = data;
-      if (this.usuario.role === 'profesor') {
-        this.cargarHistorial();
-      }
-    const urlParams = this.router.url.split('/');
-    this.cursoId = Number(urlParams[2]);
-    });
-  }
+  const urlParams = this.router.url.split('/');
+  this.cursoId = Number(urlParams[2]);  
+
+  this.http.get('http://localhost:8000/api/auth/profile/').subscribe(data => {
+    this.usuario = data;
+    if (this.usuario.role === 'profesor') {
+      this.cargarHistorial(); 
+    }
+  });
+}
+
   
-  cargarHistorial() {
-    this.http.get<any[]>('http://localhost:8000/api/cursos/historial-intercambios/')
-      .subscribe(data => {
-        console.log("Intercambios recibidos:", data);
-        this.intercambios = data;
-      });
+ cargarHistorial() {
+  if (!this.cursoId) {
+    console.error('cursoId inválido');
+    return;
   }
+
+  this.http.get<any[]>(`http://localhost:8000/api/cursos/historial-intercambios/?curso=${this.cursoId}`)
+    .subscribe(data => {
+      this.intercambios = data;
+    });
+}
+
+
 
   volverAlCurso() {
     this.router.navigate(['/curso', this.cursoId]);

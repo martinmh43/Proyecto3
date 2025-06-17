@@ -52,4 +52,3 @@ class IntercambioSerializer(serializers.ModelSerializer):
 
 
 
-
